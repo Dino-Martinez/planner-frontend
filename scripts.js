@@ -64,6 +64,24 @@ async function populatePage() {
     enableControls()
 }
 
+async function createTodo() {
+    const input = document.querySelector('#todo-input')
+    if (input.value.length > 0) {
+        const response = await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: input.value,
+                body: 'No Body Implementation yet'
+            }) 
+        })
+        refresh()
+    }
+}
+
 function enableControls() {
     const checks = document.querySelectorAll('.check-mark')
     const crosses = document.querySelectorAll('.cross')
@@ -71,21 +89,7 @@ function enableControls() {
     checks.forEach(check => {
         check.onclick = async (e) => {
             if (e.target.id === 'submit-create') {
-                const input = document.querySelector('#todo-input')
-                if (input.value.length > 0) {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                          'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            title: input.value,
-                            body: 'No Body Implementation yet'
-                        }) 
-                      })
-                    refresh()
-                }
+                createTodo()
             } else {
                 // Update todo
                 e.target.classList.toggle('check-true')
@@ -144,6 +148,12 @@ function clearCompleted() {
         }
     })
 }
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        createTodo()
+    }
+})
 
 function changeFilter (query) {
     filter.innerHTML = query
