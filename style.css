@@ -13,6 +13,7 @@ body, html {
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 18px;
+    min-height: 100vh;
 }
 
 body {
@@ -63,6 +64,11 @@ ol {
 .container {
     margin-top: 8em;
     width: clamp(375px, 50%, 600px);
+}
+
+.main-content {
+    box-shadow: 0 10px 50px -10px hsl(0, 0%, 80%);
+    border-radius: var(--border-radius);
 }
 
 .flex-row {
@@ -137,9 +143,28 @@ ol {
 
 .list-footer {
     padding: 1em;
-    display: flex;
     background: #fff;
     border-radius: 0 0 var(--border-radius) var(--border-radius);
+    justify-content: center;
+}
+
+.list-footer > p {
+    margin-left: .25em;
+    margin-right: .25em;
+}
+
+.list-footer > p:first-child {
+    margin-right: auto;
+}
+
+.list-footer > p:last-child {
+    margin-left: auto;
+}
+
+.footer-tip * {
+    text-align: center;
+    margin-top: 4em;
+    color: var(--clr-darkgrayblue);
 }
 
 @media screen and (max-width: 1170px) {
