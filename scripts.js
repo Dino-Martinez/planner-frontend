@@ -161,10 +161,9 @@ function changeFilter (query) {
 }
 
 function refresh () {
-    window.location.href = `http://${window.location.host}${window.location.pathname}?filter=${filter.innerHTML}`
-    // window.location.href = `file:///D:/Programming/express-planner/frontend/index.html?filter=${filter.innerHTML}`   
+    //window.location.href = `http://${window.location.host}${window.location.pathname}?filter=${filter.innerHTML}`
+    window.location.href = `file:///D:/Programming/express-planner/frontend/index.html?filter=${filter.innerHTML}`   
 }
 
 populatePage()
-
 
