@@ -32,6 +32,14 @@ currentFilterButtons.forEach(button => {
 async function populatePage() {
     const res = await fetch(url)
     todos = await res.json()
+    todos.sort((a,b) => {
+        if (a.completed && b.completed)
+            return 0
+        if (!a.completed && b.completed)
+            return 1
+        if (a.completed && !b.completed)
+            return -1
+    })
     let itemsLeft = 0
     todos.forEach((todo, index) => {
         if ((urlParams.filter === 'all') || (urlParams.filter === 'active' && !todo.completed) || (urlParams.filter === 'completed' && todo.completed)) {
