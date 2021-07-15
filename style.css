@@ -110,8 +110,13 @@ ol {
     background: var(--clr-checkbg);
 }
 
-.check-bg {
+.check-true {
     background: var(--clr-checkbg);
+}
+
+.status-true {
+    color: var(--clr-darkgrayblue);
+    text-decoration: line-through;
 }
 
 .cross {

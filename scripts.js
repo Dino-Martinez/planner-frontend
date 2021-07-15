@@ -11,8 +11,9 @@ async function populatePage() {
         const li = document.createElement('li')
         li.classList.add('todo')
         li.innerHTML = `
-            <svg id="complete-${todo._id}" class="check-mark" xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
-            <p class="todo-content">${todo.title}</p>
+            <svg id="complete-${todo._id}" class="check-mark check-${todo.completed}" xmlns="http://www.w3.org/2000/svg" width="11" height="9"><path fill="none" stroke="#FFF" stroke-width="2" d="M1 4.304L3.696 7l6-6"/></svg>
+            <p class="todo-content status-${todo.completed}">${todo.title} </p>
+            <p style="display: none;" id="status-${todo._id}">${todo.completed}</p>
             <svg id="delete-${todo._id}" class="cross" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>
         `
         list.appendChild(li)
@@ -48,7 +49,21 @@ function enableControls() {
                 }
             } else {
                 // Update todo
-                e.target.classList.toggle('check-bg')
+                e.target.classList.toggle('check-true')
+                const id = e.target.id.substring(9)
+                const status = !(document.querySelector(`#status-${id}`).innerHTML === 'true')
+                
+                const response = await fetch(`${url}/${id}`, {
+                    method: 'PUT',
+                    mode: 'cors',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        completed: status
+                    }) 
+                  })
+                window.location.reload()
             }
         }
     })
