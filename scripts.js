@@ -1,5 +1,6 @@
 const url = 'https://express-planner.herokuapp.com'
 const list = document.querySelector('#todo-list')
+
 async function populatePage() {
     const res = await fetch(url)
     const todos = await res.json()
@@ -70,7 +71,20 @@ function enableControls() {
 
     crosses.forEach(cross => {
         cross.onclick = async (e) => {
+            const id = e.target.id.substring(7)
             e.path[1].style.display = 'none'
+            const response = await fetch(`${url}/${id}`, {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id
+                }) 
+              })
+            
+            window.location.reload()
         }
     })
     
