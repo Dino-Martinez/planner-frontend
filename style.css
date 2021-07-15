@@ -124,16 +124,33 @@ ol {
     background: none;
     font-size: 1rem;
     font-family: 'Josefin Sans', sans-serif;
+    color: var(--clr-darkgrayblue);
 }
 
 .filter-button:hover {
-    color: #000;
+    color: var(--clr-xdarkgrayblue);
     cursor: pointer;
-    font-weight: bold;
 }
 
 .active-filter {
     color: var(--clr-brightblue);
+}
+
+.clear-button {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--clr-darkgrayblue);
+}
+
+.clear-button:hover {
+    color: var(--clr-xdarkgrayblue);
+    cursor: pointer;
+}
+
+#items-left {
+    color: var(--clr-darkgrayblue);
 }
 
 .cross {
@@ -178,11 +195,11 @@ ol {
     margin-right: .25em;
 }
 
-.list-footer > p:first-child {
+.list-footer > *:first-child {
     margin-right: auto;
 }
 
-.list-footer > p:last-child {
+.list-footer > *:last-child {
     margin-left: auto;
 }
 

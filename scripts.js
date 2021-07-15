@@ -21,13 +21,14 @@ if (urlParams.filter === undefined) {
 const url = 'https://express-planner.herokuapp.com'
 const list = document.querySelector('#todo-list')
 const filter = document.querySelector('#filter')
+let todos
 
 const currentFilterButton = document.querySelector(`#${urlParams.filter}-button`)
 currentFilterButton.classList.add('active-filter')
 
 async function populatePage() {
     const res = await fetch(url)
-    const todos = await res.json()
+    todos = await res.json()
     let itemsLeft = 0
     todos.forEach((todo, index) => {
         if ((urlParams.filter === 'all') || (urlParams.filter === 'active' && !todo.completed) || (urlParams.filter === 'completed' && todo.completed)) {
@@ -99,6 +100,25 @@ function enableControls() {
         cross.onclick = async (e) => {
             const id = e.target.id.substring(7)
             e.path[1].style.display = 'none'
+            const response = await fetch(`${url}/${id}`, {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id
+                }) 
+              })
+            refresh()
+        }
+    })
+}
+
+function clearCompleted() {
+    todos.forEach(async todo => {
+        if (todo.completed) {
+            const id = todo._id
             const response = await fetch(`${url}/${id}`, {
                 method: 'DELETE',
                 mode: 'cors',
