@@ -2,8 +2,11 @@ const list = document.querySelector('#todo-list')
 async function populatePage() {
     const res = await fetch('https://express-planner.herokuapp.com')
     const todos = await res.json()
-    console.log(todos)
+    let itemsLeft = 0
     todos.forEach((todo, index) => {
+        if (!todo.completed) {
+            itemsLeft++
+        }
         const li = document.createElement('li')
         li.classList.add('todo')
         li.innerHTML = `
@@ -13,6 +16,9 @@ async function populatePage() {
         `
         list.appendChild(li)
     })
+
+    document.querySelector('#items-left').innerHTML = `${itemsLeft} items left`
+
     enableControls()
 }
 
