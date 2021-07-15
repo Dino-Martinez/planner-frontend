@@ -119,6 +119,23 @@ ol {
     text-decoration: line-through;
 }
 
+.filter-button {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.filter-button:hover {
+    color: #000;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.active-filter {
+    color: var(--clr-brightblue);
+}
+
 .cross {
     margin-left: auto;
     display: none;

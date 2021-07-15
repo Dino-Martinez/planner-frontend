@@ -14,6 +14,7 @@
 <body>
   <img class="hero" src="./images/bg-desktop-light.jpg" alt="Hero Image">
   <section id="content" class="container">
+    <p id="filter" style="display: none;">all</p>
     <header class="flex-row between">
       <h1>TODO</h1>
       <svg class="dark-mode-toggle" xmlns="http://www.w3.org/2000/svg" width="26" height="26"><path fill="#FFF" fill-rule="evenodd" d="M13 0c.81 0 1.603.074 2.373.216C10.593 1.199 7 5.43 7 10.5 7 16.299 11.701 21 17.5 21c2.996 0 5.7-1.255 7.613-3.268C23.22 22.572 18.51 26 13 26 5.82 26 0 20.18 0 13S5.82 0 13 0z"/></svg>
@@ -32,9 +33,9 @@
 
       <footer id="list-footer" class="flex-row list-footer">
         <p id="items-left">n items left</p>
-        <p>All</p>
-        <p>Active</p>
-        <p>Completed</p>
+        <button id="all-button" class="filter-button" onclick="changeFilter('all')">All</button>
+        <button id="active-button" class="filter-button" onclick="changeFilter('active')">Active</button>
+        <button id="completed-button" class="filter-button" onclick="changeFilter('completed')">Completed</button>
         <p>Clear Completed</p>
       </footer>
     </main>
