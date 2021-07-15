@@ -33,12 +33,18 @@
 
       <footer id="list-footer" class="flex-row list-footer">
         <p id="items-left">n items left</p>
-        <button id="all-button" class="filter-button" onclick="changeFilter('all')">All</button>
-        <button id="active-button" class="filter-button" onclick="changeFilter('active')">Active</button>
-        <button id="completed-button" class="filter-button" onclick="changeFilter('completed')">Completed</button>
+        <button id="all-button" class="filter-button all-button" onclick="changeFilter('all')">All</button>
+        <button id="active-button" class="filter-button active-button" onclick="changeFilter('active')">Active</button>
+        <button id="completed-button" class="filter-button completed-button" onclick="changeFilter('completed')">Completed</button>
         <button id="clear-button" class="clear-button" onclick="clearCompleted()">Clear Completed</button>
       </footer>
     </main>
+
+    <aside class="mobile-filters">
+      <button id="all-button-mobile" class="filter-button all-button" onclick="changeFilter('all')">All</button>
+      <button id="active-button-mobile" class="filter-button active-button" onclick="changeFilter('active')">Active</button>
+      <button id="completed-button-mobile" class="filter-button completed-button" onclick="changeFilter('completed')">Completed</button>
+    </aside>
 
     <aside class="footer-tip">
       <p>Drag and drop to reorder list</p>

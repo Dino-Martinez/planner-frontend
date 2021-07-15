@@ -23,8 +23,11 @@ const list = document.querySelector('#todo-list')
 const filter = document.querySelector('#filter')
 let todos
 
-const currentFilterButton = document.querySelector(`#${urlParams.filter}-button`)
-currentFilterButton.classList.add('active-filter')
+const currentFilterButtons = document.querySelectorAll(`.${urlParams.filter}-button`)
+
+currentFilterButtons.forEach(button => {
+    button.classList.add('active-filter')
+})
 
 async function populatePage() {
     const res = await fetch(url)

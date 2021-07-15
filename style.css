@@ -15,6 +15,8 @@ body, html {
     font-size: 18px;
     min-height: 100vh;
     overflow-x: hidden;
+    background-color: var(--clr-lightgray);
+    z-index: -2;
 }
 
 body {
@@ -22,6 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 5rem;
 }
 
 body * {
@@ -58,11 +61,11 @@ ol {
 
 .container {
     margin-top: 8em;
-    width: clamp(375px, 50%, 600px);
+    width: clamp(300px, 90%, 750px);
 }
 
 .main-content {
-    box-shadow: 0 10px 50px -10px hsl(0, 0%, 80%);
+    box-shadow: 0 50px 50px -20px hsl(0, 0%, 90%);
     border-radius: var(--border-radius);
 }
 
@@ -139,7 +142,7 @@ ol {
 .clear-button {
     border: none;
     background: none;
-    font-size: 1rem;
+    font-size: .75em;
     font-family: 'Josefin Sans', sans-serif;
     color: var(--clr-darkgrayblue);
 }
@@ -151,6 +154,7 @@ ol {
 
 #items-left {
     color: var(--clr-darkgrayblue);
+    font-size: .75em;
 }
 
 .cross {
@@ -209,8 +213,30 @@ ol {
     color: var(--clr-darkgrayblue);
 }
 
-@media screen and (max-width: 1170px) {
-    body::before {
-        background-size: auto 25vh;
+.mobile-filters {
+    display:none;
+}
+
+@media screen and (max-width: 500px) {
+    body, html {
+        font-size: 12px;
+    }
+
+    #all-button, #active-button, #completed-button {
+        display: none;
+    }
+
+    .cross {
+        display: block;
+    }
+
+    .mobile-filters {
+        display:flex;
+        justify-content: center;
+        margin-top: 1em;
+        padding: 1em;
+        background: #fff;
+        border-radius: var(--border-radius);
+        box-shadow: 0 0 15px 0 hsl(0, 0%, 90%);
     }
 }
