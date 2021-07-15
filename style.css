@@ -106,6 +106,10 @@ ol {
     cursor: pointer;
 }
 
+.check-bg {
+    background: var(--clr-checkbg);
+}
+
 .cross {
     margin-left: auto;
     display: none;
