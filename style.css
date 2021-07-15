@@ -106,6 +106,10 @@ ol {
     cursor: pointer;
 }
 
+#submit-create:hover {
+    background: var(--clr-checkbg);
+}
+
 .check-bg {
     background: var(--clr-checkbg);
 }

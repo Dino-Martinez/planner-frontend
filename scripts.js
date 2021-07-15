@@ -1,6 +1,7 @@
+const url = 'https://express-planner.herokuapp.com'
 const list = document.querySelector('#todo-list')
 async function populatePage() {
-    const res = await fetch('https://express-planner.herokuapp.com')
+    const res = await fetch(url)
     const todos = await res.json()
     let itemsLeft = 0
     todos.forEach((todo, index) => {
@@ -27,13 +28,38 @@ function enableControls() {
     const crosses = document.querySelectorAll('.cross')
 
     checks.forEach(check => {
-        check.onclick = (e) => e.target.classList.toggle('check-bg')
+        check.onclick = async (e) => {
+            if (e.target.id === 'submit-create') {
+                const input = document.querySelector('#todo-input')
+                if (input.value.length > 0) {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                          'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            title: input.value,
+                            body: 'No Body Implementation yet'
+                        }) 
+                      })
+                    input.value = ''
+                    window.location.reload()
+                }
+            } else {
+                // Update todo
+                e.target.classList.toggle('check-bg')
+            }
+        }
     })
 
     crosses.forEach(cross => {
-        cross.onclick = (e) => e.path[1].style.display = 'none'
+        cross.onclick = async (e) => {
+            e.path[1].style.display = 'none'
+        }
     })
     
+
 }
 
 populatePage()
