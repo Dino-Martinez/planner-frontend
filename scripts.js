@@ -22,7 +22,9 @@ const url = 'https://express-planner.herokuapp.com'
 const list = document.querySelector('#todo-list')
 const filter = document.querySelector('#filter')
 let todos
-
+let viewWidth = window.innerWidth
+let theme = 'light'
+const hero = document.querySelector('#hero')
 const currentFilterButtons = document.querySelectorAll(`.${urlParams.filter}-button`)
 
 currentFilterButtons.forEach(button => {
@@ -155,6 +157,54 @@ document.addEventListener('keydown', (event) => {
     }
 })
 
+function themeSwitch(newTheme) {
+    theme = newTheme
+    const currentTheme = document.documentElement.getAttribute("data-theme")
+    const lightBtn = document.querySelector('#light-toggle')
+    const darkBtn = document.querySelector('#dark-toggle')
+    if (newTheme !== currentTheme) {
+        document.documentElement.setAttribute("data-theme", newTheme)
+        const root = document.querySelector(':root')
+        const device = viewWidth > 500 ? 'desktop' : 'mobile'
+        const src = `./images/bg-${device}`
+        if (newTheme === 'dark') {
+            darkBtn.classList.add('hidden')
+            lightBtn.classList.remove('hidden')
+
+            root.style.cssText = `
+                --clr-page-background: hsl(235, 21%, 11%);
+                --clr-highlight: hsl(237, 14%, 26%);
+                --clr-text-inactive: hsl(233, 14%, 35%);
+                --clr-text-muted: hsl(234, 11%, 52%);
+                --clr-text: hsl(234, 39%, 85%);
+                --clr-brightblue: hsl(220, 98%, 61%);
+                --clr-content-background: hsl(235, 24%, 19%);
+                --clr-shadow: hsl(0, 0%, 5%);
+                --clr-checkbg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                --border-radius: 7px;
+            `
+        } else {
+            darkBtn.classList.remove('hidden')
+            lightBtn.classList.add('hidden')
+
+
+            root.style.cssText = `
+                --clr-page-background: hsl(0, 0%, 98%);
+                --clr-highlight: hsl(236, 33%, 92%);
+                --clr-text-inactive: hsl(233, 11%, 84%);
+                --clr-text-muted: hsl(236, 9%, 61%);
+                --clr-text: hsl(235, 19%, 35%);
+                --clr-brightblue: hsl(220, 98%, 61%);
+                --clr-content-background: hsl(0, 0%, 100%);
+                --clr-shadow: hsl(0, 0%, 90%);
+                --clr-checkbg: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+                --border-radius: 7px;
+            `
+        }
+        hero.src = `${src}-${theme}.jpg`
+    }
+}
+
 function changeFilter (query) {
     filter.innerHTML = query
     refresh()
@@ -167,3 +217,10 @@ function refresh () {
 
 populatePage()
 
+
+window.onresize = () => {
+    const device = viewWidth > 500 ? 'desktop' : 'mobile'
+    const src = `./images/bg-${device}`
+    hero.src = `${src}-${theme}.jpg`
+    viewWidth = window.innerWidth
+}

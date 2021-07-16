@@ -31,6 +31,7 @@ body {
 
 body * {
     color: var(--clr-text);
+    transition: all .2s ease-out;
 }
 
 h1,h2,h3,h4,p {
@@ -80,8 +81,16 @@ ol {
     justify-content: space-between;
 }
 
-.light-mode-toggle {
+.hidden {
     display: none;
+}
+
+.toggle:hover {
+    cursor: pointer;
+}
+
+.toggle:hover > path {
+    fill: var(--clr-text-muted);
 }
 
 .todo {
@@ -98,6 +107,7 @@ ol {
     font-size: 1em;
     width: 100%;
     font-family: 'Josefin Sans', sans-serif;
+    background: var(--clr-content-background);
 }
 
 .check-mark {
@@ -112,8 +122,20 @@ ol {
     cursor: pointer;
 }
 
+#submit-create > path {
+    display: none;
+}
+
+#submit-create:hover > path {
+    display: block;
+}
+
 #submit-create:hover {
     background: var(--clr-checkbg);
+}
+
+.check-false > path {
+    display: none;
 }
 
 .check-true {
