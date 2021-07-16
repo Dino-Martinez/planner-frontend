@@ -21,11 +21,12 @@ if (urlParams.filter === undefined) {
 const url = 'https://express-planner.herokuapp.com'
 const list = document.querySelector('#todo-list')
 const filter = document.querySelector('#filter')
-let todos
-let viewWidth = window.innerWidth
-let theme = 'light'
 const hero = document.querySelector('#hero')
 const currentFilterButtons = document.querySelectorAll(`.${urlParams.filter}-button`)
+let todos
+let viewWidth = window.innerWidth
+let theme = urlParams.theme || 'light'
+themeSwitch(theme)
 
 currentFilterButtons.forEach(button => {
     button.classList.add('active-filter')
@@ -212,7 +213,7 @@ function changeFilter (query) {
 
 function refresh () {
     //window.location.href = `http://${window.location.host}${window.location.pathname}?filter=${filter.innerHTML}`
-    window.location.href = `file:///D:/Programming/express-planner/frontend/index.html?filter=${filter.innerHTML}`   
+    window.location.href = `file:///D:/Programming/express-planner/frontend/index.html?filter=${filter.innerHTML}&theme=${theme}`   
 }
 
 populatePage()
