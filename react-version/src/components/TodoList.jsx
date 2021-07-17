@@ -17,6 +17,7 @@ function TodoList(props) {
                 return -1
             return 0
         })
+        
         setData(todos)
     }
 
@@ -31,18 +32,35 @@ function TodoList(props) {
                 id: id
             }) 
           })
+        
+        setData(data.filter(todo => todo._id !== id))
     }
 
-    const toggleTodo = (id) => {
+    const toggleTodo = async (id, completed) => {
+        await fetch(`${url}/${id}`, {
+            method: 'PUT',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                completed: completed
+            }) 
+          })
 
-    }
+        // In-place version might be more performant?
+        // items[items.findIndex(el => el.id === item.id)] = item;
 
-    const createTodo = (id) => {
-    
+        const updatedItems = data.map(todo => {
+            if (todo._id === id) {
+                todo.completed = !todo.completed
+            }
+            return todo
+        })
+        setData(updatedItems)
     }
 
     useEffect(() => {
-        console.log('hi')
         getData()
     }, [])
 
@@ -51,7 +69,7 @@ function TodoList(props) {
             {!data
                 ? <p>Loading...</p>
                 : data.map(todo => {
-                    return <Todo key={todo._id} _id={todo._id} completed={todo.completed} title={todo.title} delete={deleteTodo}></Todo>
+                    return <Todo key={todo._id} _id={todo._id} completed={todo.completed} title={todo.title} toggle={toggleTodo} delete={deleteTodo}></Todo>
                 })
             }
         </ol>
