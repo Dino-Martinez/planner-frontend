@@ -12,7 +12,7 @@ const compareTodos = (a,b) => {
     return 0
 }
 
-function TodoList(props) {
+function TodoList() {
     const [data, setData] = useState(undefined)
     const [filter, setFilter] = useState('all')
     const url = 'https://express-planner.herokuapp.com'
@@ -109,7 +109,9 @@ function TodoList(props) {
             <main id="main-content" className="main-content">
                 <ol className="todo-list">
                     {!data
-                        ? <p>Loading...</p>
+                        ? (<li className="todo">
+                                <p className={`todo-content loading`}>Loading </p>
+                            </li>)
                         : data.map(todo => {
                             if (filter === 'all' || todo.completed === filter) {
                                 numTodos++
