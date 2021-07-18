@@ -1,6 +1,7 @@
 import './App.css'
 import TodoList from './components/TodoList'
 
+
 function App() {
   const data = [
     {_id: '1', completed:false, title: 'sample 1'},
@@ -9,9 +10,10 @@ function App() {
     {_id: '4', completed:false, title: 'sample 4'},
   ]
   return (
-    <div>
+    <section id="content" className="container">
+      
       <TodoList data={data}></TodoList>
-    </div>
+    </section>
   )
 }
 

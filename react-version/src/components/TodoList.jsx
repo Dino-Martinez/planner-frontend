@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Todo from './Todo'
+import TodoInput from './TodoInput'
 
 function TodoList(props) {
     const [data, setData] = useState(undefined)
@@ -17,7 +18,7 @@ function TodoList(props) {
                 return -1
             return 0
         })
-        
+
         setData(todos)
     }
 
@@ -60,19 +61,40 @@ function TodoList(props) {
         setData(updatedItems)
     }
 
+    const submitTodo = async (value) => {
+        await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: value,
+                body: 'No Body Implementation yet'
+            }) 
+        })
+        
+        getData()
+    }
+
     useEffect(() => {
         getData()
     }, [])
 
     return (
-        <ol className="todo-list">
-            {!data
-                ? <p>Loading...</p>
-                : data.map(todo => {
-                    return <Todo key={todo._id} _id={todo._id} completed={todo.completed} title={todo.title} toggle={toggleTodo} delete={deleteTodo}></Todo>
-                })
-            }
-        </ol>
+        <React.Fragment>
+            <TodoInput submit={submitTodo}></TodoInput>
+            <main id="main-content" className="main-content">
+                <ol className="todo-list">
+                    {!data
+                        ? <p>Loading...</p>
+                        : data.map(todo => {
+                            return <Todo key={todo._id} _id={todo._id} completed={todo.completed} title={todo.title} toggle={toggleTodo} delete={deleteTodo}></Todo>
+                        })
+                    }
+                </ol>
+            </main>
+        </React.Fragment>
     )
 }
 
