@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+
 :root {
     --clr-page-background: hsl(0, 0%, 98%);
     --clr-highlight: hsl(236, 33%, 92%);
@@ -18,10 +20,9 @@ body, html {
     min-height: 100vh;
     overflow-x: hidden;
     background-color: var(--clr-page-background);
-    z-index: -2;
 }
 
-body {
+#root {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -59,12 +60,12 @@ ol {
     left:0;
     min-width: 100vw;
     height: 400px;
-    z-index: -1;
 }
 
 .container {
     margin-top: 8em;
     width: clamp(300px, 90%, 750px);
+    z-index: 1;
 }
 
 .main-content {
