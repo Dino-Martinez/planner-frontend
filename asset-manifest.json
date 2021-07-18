@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/planner-frontend/static/css/main.a39b0e9b.chunk.css",
-    "main.js": "/planner-frontend/static/js/main.9dcdf88f.chunk.js",
-    "main.js.map": "/planner-frontend/static/js/main.9dcdf88f.chunk.js.map",
+    "main.css": "/planner-frontend/static/css/main.385ff75c.chunk.css",
+    "main.js": "/planner-frontend/static/js/main.72abf580.chunk.js",
+    "main.js.map": "/planner-frontend/static/js/main.72abf580.chunk.js.map",
     "runtime-main.js": "/planner-frontend/static/js/runtime-main.0ac63fc6.js",
     "runtime-main.js.map": "/planner-frontend/static/js/runtime-main.0ac63fc6.js.map",
     "static/js/2.3e1e6792.chunk.js": "/planner-frontend/static/js/2.3e1e6792.chunk.js",
     "static/js/2.3e1e6792.chunk.js.map": "/planner-frontend/static/js/2.3e1e6792.chunk.js.map",
     "index.html": "/planner-frontend/index.html",
-    "static/css/main.a39b0e9b.chunk.css.map": "/planner-frontend/static/css/main.a39b0e9b.chunk.css.map",
+    "static/css/main.385ff75c.chunk.css.map": "/planner-frontend/static/css/main.385ff75c.chunk.css.map",
     "static/js/2.3e1e6792.chunk.js.LICENSE.txt": "/planner-frontend/static/js/2.3e1e6792.chunk.js.LICENSE.txt",
     "static/media/bg-desktop-light.3508d620.jpg": "/planner-frontend/static/media/bg-desktop-light.3508d620.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.0ac63fc6.js",
     "static/js/2.3e1e6792.chunk.js",
-    "static/css/main.a39b0e9b.chunk.css",
-    "static/js/main.9dcdf88f.chunk.js"
+    "static/css/main.385ff75c.chunk.css",
+    "static/js/main.72abf580.chunk.js"
   ]
 }
