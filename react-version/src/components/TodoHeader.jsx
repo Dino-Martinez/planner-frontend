@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function TodoHeader() {
-    const [theme, setTheme] = useState('light')
+    const [theme, setTheme] = useState('dark')
 
     const toggle = () => {
         const root = document.querySelector(':root')
